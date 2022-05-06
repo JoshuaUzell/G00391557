@@ -1,20 +1,61 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Films
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!--Inserts image, Reference (3)-->
+  <ion-img style="width: 200px; height: 200px;" src="https://ixf3x2bip9hebi84at54l122-wpengine.netdna-ssl.com/wp-content/uploads/2018/02/popcorn-img.png">
+    </ion-img>
+
+    <br> <!--Creates a space-->
+    Please enter your name:
+    <br> <!--Creates a space-->
+    (Max length for username is 20)
+    
+    <br> <!--Creates a space-->
+    <br> <!--Creates a space-->
+    <ion-item>
+       <!--Allows the user to enter his/her name with max length of 20, Reference (2)-->
+      <ion-label position="stacked">Enter here</ion-label>
+      <ion-input [(ngModel)] ="name" maxlength="20"></ion-input>
+    </ion-item>
+
+    {{ checkName() }} <!--Calls the check name function, Reference (1)-->
+
+    <ion-button size="small" color="primary" [disabled]="isDisabled" (click)="onConfirm()">Confirm</ion-button>
+
+    <!--Displays user's name and asks them to choose a film to look at-->
+    <!--Text stays hidden until user enters a proper name-->
+    <h2 [hidden] = "hidden">Welcome {{storedName}}</h2>
+    <p [hidden] = "hidden">Please choose a film to look at:</p>
+  
+     <!--Displays list of buttons that directs user to one of the film pages-->
+    <ion-list [hidden] = "hidden">
+      <ion-button [routerLink]="['/gog']" routerDirection="forward" size="small" color="secondary">GOG Vol 2</ion-button>
+      <ion-button [routerLink]="['/btfuture']" routerDirection="forward" size="small" color="secondary">BackToTheFuture</ion-button>
+      <ion-button [routerLink]="['/lord-of-rings']" routerDirection="forward" size="small" color="secondary">LordOfTheRings</ion-button>
+      <ion-button [routerLink]="['/blade-runner']" routerDirection="forward" size="small" color="secondary">BladeRunner</ion-button>
+    </ion-list>
+
+    <!--Displays Ratings from User-->
+    <h2 [hidden] = "hidden">Your Ratings</h2>
+    <ion-list [hidden] = "hidden">
+      <p>GOG Vol 2 Rating: {{filmRatingGOG}}</p>
+      <p>BackToTheFuture: {{filmRatingbtFuture}}</p>
+      <p>Lord Of The Rings: {{filmRatingLordOfRings}}</p>
+      <p>Blade Runner: {{filmRatingBladeRunner}}</p>
+    </ion-list>
+
 </ion-content>
+
+<!--References-->
+<!--
+1. https://newbedev.com/html-how-to-call-function-from-html-in-angular-code-example
+2. https://stackoverflow.com/questions/24701205/how-can-you-limit-the-value-from-input-using-angularjs
+3. https://ionicframework.com/docs/v3/api/components/img/Img/
+-->

@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BladeRunner</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <img src="{{movieData.Poster}}">
+      <ion-card-title>{{movieData.Title}}</ion-card-title>
+      <ion-card-subtitle>Year of Release: {{movieData.Year}}</ion-card-subtitle>
+      <ion-card-subtitle>Age Rating: {{movieData.Rated}}</ion-card-subtitle>
+      
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{movieData.Plot}}
+    </ion-card-content>
+    <img style="width: 40px; height: 40px;" src="https://www.pinclipart.com/picdir/big/149-1497095_file-metacritic-svg-wikimedia-commons-gucci-logo-svg.png">
+    <ion-label >Metacritic: {{movieData.Metascore}}</ion-label>
+    <br>
+    <br>
+    <img style="width: 40px; height: 40px;" src="https://m.media-amazon.com/images/G/01/IMDb/BG_icon_iOS._SY230_SX307_AL_.png">
+    <ion-label>IMDB: {{movieData.imdbRating}}</ion-label>
+      
+  </ion-card>
+
+  {{checkForRating()}}<!--Checks if rating has been selected by user--> 
+ 
+  <h6 style="text-indent:10px" [hidden]="hidden">You rated this movie as {{filmRating}}</h6>
+  <!--Saves the rating, Reference(2)-->
+  <ion-button (click)="vibrateDevice()" (click)="onSave()" [hidden]="hidden" shape="round" expand="block" color="success">Save Rating</ion-button> 
+
+  <ion-list>
+    <ion-radio-group [(ngModel)]="filmRating">
+      <ion-list-header>
+        <h6>How would you rate the movie?</h6>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label>Excellent</ion-label>
+        <!--Displays icon, Reference (1)-->
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <ion-radio slot="start" value="Excellent"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Decent</ion-label>
+        <ion-icon name="thumbs-down-outline"></ion-icon>
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+        <ion-radio slot="start" value="Decent"></ion-radio>
+      </ion-item> 
+   
+      <ion-item>
+        <ion-label>Terrible</ion-label>
+        <!--Displays icon, Reference (1)-->
+        <ion-icon name="thumbs-down-outline"></ion-icon>
+        <ion-radio slot="start" value="Terrible"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  
+
+ 
+</ion-content>
+ 
+<!--References
+1. https://ionic.io/ionicons
+2. https://ionicframework.com/docs/v4/api/button
+-->
